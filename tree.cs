@@ -99,3 +99,29 @@ public void PostHelper(Node root, List<int> list)
     }
     list.Add(root.val);
 }
+
+public IList<IList<int>> LevelOrder(Node root) {
+    var result = new List<IList<int>>();
+    if(root == null)
+    {
+        return result;
+    }
+    Queue<Node> queue = new Queue<Node>();
+    queue.Enqueue(root);
+    while(queue.Any())
+    {
+        var size = queue.Count;
+
+        var tempList = new List<int>();
+        for (int s = 0; s < size; s++) {
+            var cur = queue.Dequeue();
+            tempList.Add(cur.val);
+
+            foreach (var child in cur.children) {
+                queue.Enqueue(child);
+            }
+        }
+        result.Add(tempList);
+    }
+    return result;
+}
