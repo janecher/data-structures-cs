@@ -35,28 +35,6 @@ public List<int> Preorder(Node root) {
     return result;      
 }
 
-public List<int> PreorderRecursive(Node root) {
-    var result = new List<int>();
-    Helper(root, result);
-    return result;
-}
-
-public void Helper(Node root, List<int> list)
-{
-    if(root == null)
-    {
-        return;
-    }
-    list.Add(root.val);
-    if(root.children != null)
-    {
-        foreach(var child in root.children)
-        {
-            Helper(child, list);
-        }
-    } 
-}
-
 public List<int> Postorder(Node root) {
     var result = new List<int>();
     if(root == null)
@@ -76,4 +54,48 @@ public List<int> Postorder(Node root) {
     }
     result.Reverse();
     return result;
+}
+
+public List<int> PreorderRecursive(Node root) {
+    var result = new List<int>();
+    PreHelper(root, result);
+    return result;
+}
+
+public void PreHelper(Node root, List<int> list)
+{
+    if(root == null)
+    {
+        return;
+    }
+    list.Add(root.val);
+    if(root.children != null)
+    {
+        foreach(var child in root.children)
+        {
+            PreHelper(child, list);
+        }
+    } 
+}
+
+public List<int> PostorderRecursive(Node root) {
+    var result = new List<int>();
+    PostHelper(root, result);
+    return result;
+}
+
+public void PostHelper(Node root, List<int> list)
+{
+    if(root == null)
+    {
+        return;
+    }
+    if(root.children != null)
+    {
+        foreach(var child in root.children)
+        {
+            PostHelper(child, list);
+        }
+    }
+    list.Add(root.val);
 }
