@@ -125,3 +125,16 @@ public IList<IList<int>> LevelOrder(Node root) {
     }
     return result;
 }
+
+public int MaxDepth(Node root) {
+    if(root == null)
+    {
+        return 0;
+    }
+    int depth = 1;
+    foreach(var child in root.children)
+    {
+        depth = Math.Max(depth, MaxDepth(child) + 1);
+    }
+    return depth;
+}
