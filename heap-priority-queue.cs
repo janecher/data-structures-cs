@@ -2,9 +2,9 @@
 Definition for a heap class.
 public class Node {
     public int val;
-    public left;
-    public TreeNode right;
-    public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+    public Node left;
+    public Node right;
+    public Node(int val=0, Node left=null, Node right=null) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -14,9 +14,9 @@ public class Node {
 public class PriorityNode {
     public int val;
     public int priority;
-    public left;
-    public TreeNode right;
-    public TreeNode(int val=0, int priority, TreeNode left=null, TreeNode right=null) {
+    public PriorityNode left;
+    public PriorityNode right;
+    public PriorityNode(int val=0, int priority, PriorityNode left=null, PriorityNode right=null) {
         this.priority = priority;
         this.val = val;
         this.left = left;
@@ -29,7 +29,8 @@ public class PriorityNode {
 (n-1)/2 - parent
 */
 
-//in case of priority queue- dequeue and enqueue and comparing by priority!
+//in case of priority queue- dequeue and enqueue instead of extractMax and insert, 
+//and comparing by priority!
 public class MaxBinaryHeap {
     public List<Node> values;
     public MaxBinaryHeap() {
