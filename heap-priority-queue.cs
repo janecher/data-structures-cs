@@ -44,7 +44,8 @@ public class MaxBinaryHeap {
         while(index >= 0)
         {
             int parent = (index - 1)/2;
-            if(values[parent] > values[index])
+            //priority queue - .priority
+            if(values[parent].val > values[index].val)
             {
                 break;
             }
@@ -53,11 +54,15 @@ public class MaxBinaryHeap {
         }
     }
 
-    public int ExtractMax()
+    public Node ExtractMax()
     {
-        int max = values[0];
+        if(values.Count == 0)
+        {
+            return null;
+        }
+        Node max = values[0];
         Swap(values, 0, values.Count-1);
-        values.RemoveAt(rows.Count - 1);
+        values.RemoveAt(values.Count - 1);
         if(values.Count == 0)
         {
             return max;
@@ -68,12 +73,13 @@ public class MaxBinaryHeap {
             int swap = -1;
             int left = index * 2 + 1;
             int right = index * 2 + 1;
-            if(left < values.Count && values[index] < values[left])
+            //priority queue - .priority
+            if(left < values.Count && values[index].val < values[left].val)
             {
                 swap = left;
             }
-            if(right < values.Count && ((swap == -1 && values[index] < values[right]) 
-                || (swap!= -1 && values[left] < values[right]))
+            if(right < values.Count && ((swap == -1 && values[index].val < values[right].val) 
+                || (swap!= -1 && values[left].val < values[right].val))
             {
                 swap = right;
             }
